@@ -1,20 +1,20 @@
 <?php
 
-include ('conexion_be.php');
+include ('conexion_be.php'); 
 
 $nombre_completo = $_POST['nombre_completo'];
 $correo = $_POST['correo'];
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 
-$query = "INSERT INTO T_LOGIN(nombre_completo,correo,usuario,contrasena)
+$query = "INSERT INTO T_LOGIN(nombre_completo,correo,usuario,contrasena) // CONSULTA PARA MYSQL
         VALUES('$nombre_completo','$correo','$usuario','$contrasena')";
 
 $verificar_correo = mysqli_query($conexion,"SELECT*FROM T_LOGIN WHERE correo= '$correo'");
 if(mysqli_num_rows($verificar_correo)>0){
     echo'
         <script>
-            alert("Correo ya existente");
+            alert("Correo ya existente"); // CONDICIONAL
             window.location = "../../index.php";
         </script>
     ';
