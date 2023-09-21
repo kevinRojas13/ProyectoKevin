@@ -112,7 +112,7 @@
 
         <!-- Formulario de inserción -->
         <form action="insertar.php" method="POST">
-            <label for="nombre">Nombre del producto:</label>
+            <label for="nombre">Tareas que desees Realizar:</label>
             <input type="text" name="nombre" id="nombre" required>
             <br>
             <label for="precio">Precio:</label>

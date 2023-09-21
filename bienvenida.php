@@ -60,10 +60,9 @@
     <div class="container">
         <h1>¿QUÉ HAREMOS HOY?</h1>
         <div class="button-group">
-            <a href="insertar.php">INSERTAR</a>
-            <a href="actualizar.php">ACTUALIZAR</a>
+            <a href="insertar.php">INSERTAR TAREAS</a>
+            <a href="actualizar.php">MODOFICAR TAREAS</a>
             <a href="vizualizar.php" class="middle-button">Vizualizar</a>
-            <a href="generar_pdf.php">GENERAR PDF</a>
             <a href="eliminar.php">ELIMINAR</a>
         </div>
     </div>
