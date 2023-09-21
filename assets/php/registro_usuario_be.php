@@ -7,10 +7,10 @@ $correo = $_POST['correo'];
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 
-$query = "INSERT INTO T_LOGIN(nombre_completo,correo,usuario,contrasena)
+$query = "INSERT INTO USUARIOS (nombre_completo,correo,usuario,contrasena)
         VALUES('$nombre_completo','$correo','$usuario','$contrasena')";
 
-/*$verificar_correo = mysqli_query($conexion,"SELECT*FROM T_LOGIN WHERE correo= '$correo'");
+$verificar_correo = mysqli_query($conexion,"SELECT*FROM USUARIOS  WHERE correo= '$correo'");
 if(mysqli_num_rows($verificar_correo)>0){
     echo'
         <script>
@@ -20,7 +20,7 @@ if(mysqli_num_rows($verificar_correo)>0){
     ';
     exit();
 }
-$verificar_usuario = mysqli_query($conexion,"SELECT*FROM T_LOGIN WHERE usuario= '$usuario'");
+$verificar_usuario = mysqli_query($conexion,"SELECT*FROM USUARIOS  WHERE usuario= '$usuario'");
 if(mysqli_num_rows($verificar_usuario)>0){
     echo'
         <script>
@@ -30,7 +30,6 @@ if(mysqli_num_rows($verificar_usuario)>0){
     ';
     exit();
 }
-*/
 $ejecutar = mysqli_query($conexion, $query);
 
 if ($ejecutar) {
