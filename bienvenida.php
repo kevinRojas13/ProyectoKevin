@@ -58,12 +58,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>¿QUÉ HAREMOS HOY?</h1>
+        <h1>¿LISTADO DE TAREAS?</h1>
         <div class="button-group">
             <a href="insertar.php">INSERTAR TAREAS</a>
             <a href="actualizar.php">MODOFICAR TAREAS</a>
             <a href="vizualizar.php" class="middle-button">Vizualizar</a>
             <a href="eliminar.php">ELIMINAR</a>
+            <a href="index.php">Cerrar Cesión</a>
         </div>
     </div>
 </body>
