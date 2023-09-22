@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/estilos.css">
     <style>
         body {
-            background-image: url("assets/images/bg1.jpg");
+            background-image: url("assets/images/R.jpeg");
             background-repeat: no-repeat;
             background-size: cover;
             font-family: 'Poppins', sans-serif;
@@ -104,7 +104,7 @@
 <?php
         } else {
             // Mostrar alerta si no se encontró la tarea
-            echo "<p class='mensaje' id='alertaNoEncontrado'>No se encontró el producto con el ID especificado.</p>";
+            echo "<p class='mensaje' id='alertaNoEncontrado'>No se encontró la tarea.</p>";
         }
     }
 
