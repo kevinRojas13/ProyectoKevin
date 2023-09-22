@@ -68,37 +68,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>Visualizar Productos</h1>
+        <h1>Visualizar Tareas</h1>
         
         <?php
         require_once "assets/php/conexion_be.php";
 
-        $query = "SELECT * FROM productos";
+        $query = "SELECT * FROM TAREAS";
         $result = mysqli_query($conexion, $query);
 
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";
             echo "<tr>";
-            echo "<th>ID</th>";
-            echo "<th>Nombre</th>";
-            echo "<th>Descripción</th>";
-            echo "<th>Precio</th>";
-            echo "<th>Stock</th>";
+            echo "<th>nombre</th>";
+            echo "<th>fecha</th>";
+            echo "<th>descripción</th>";
             echo "</tr>";
 
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td>" . $row['id_producto'] . "</td>";
                 echo "<td>" . $row['nombre'] . "</td>";
                 echo "<td>" . $row['descripcion'] . "</td>";
-                echo "<td>" . $row['precio'] . "</td>";
-                echo "<td>" . $row['stock'] . "</td>";
+                echo "<td>" . $row['fecha'] . "</td>";
                 echo "</tr>";
             }
 
             echo "</table>";
         } else {
-            echo "No se encontraron productos.";
+            echo "No se encontró información.";
         }
         ?>
 
