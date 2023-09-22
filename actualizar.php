@@ -103,10 +103,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Actualizar Producto</h1>
+        <h1>Actualizar</h1>
         <form action="" method="GET" class="formulario">
             <div class="form-control">
-                <label for="id">ID del Producto:</label>
+                <label for="id">Nombre Tarea:</label>
                 <input type="text" name="id" id="id" required>
             </div>
             <div class="form-control">
@@ -114,23 +114,22 @@
             </div>
         </form>
         <?php
-require_once "assets/php/conexion_be.php";
+        require_once "assets/php/conexion_be.php";
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
 
-    $query = "SELECT * FROM productos WHERE id_producto = '$id'";
-    $result = mysqli_query($conexion, $query);
+            $query = "SELECT * FROM tareas WHERE nombre = '$id'";
+            $result = mysqli_query($conexion, $query);
 
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $nombre = $row['nombre'];
-        $descripcion = $row['descripcion'];
-        $precio = $row['precio'];
-        $stock = $row['stock'];
-?>
-        <div class="producto">
-            <h2>Datos del Producto</h2>
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $nombre = $row['nombre'];
+                $fecha = $row['fecha'];
+                $descripcion = $row['descripcion'];
+        ?>
+        <div class="tareas">
+            <h2>Datos de la Tarea</h2>
             <form action="actualizar.php" method="POST" class="formulario">
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div class="form-control">
@@ -138,55 +137,47 @@ if (isset($_GET['id'])) {
                     <input type="text" name="nombre" id="nombre" value="<?php echo $nombre; ?>" required>
                 </div>
                 <div class="form-control">
+                    <label for="fecha">Fecha:</label>
+                    <input type="text" name="fecha" id="fecha" value="<?php echo $fecha; ?>" required>
+                </div>
+                <div class="form-control">
                     <label for="descripcion">Descripción:</label>
                     <textarea name="descripcion" id="descripcion" rows="5" required><?php echo $descripcion; ?></textarea>
-                </div>
-                <div class="form-control">
-                    <label for="precio">Precio:</label>
-                    <input type="number" name="precio" id="precio" value="<?php echo $precio; ?>" required>
-                </div>
-                <div class="form-control">
-                    <label for="stock">Stock:</label>
-                    <input type="number" name="stock" id="stock" value="<?php echo $stock; ?>" required>
                 </div>
                 <div class="form-control">
                     <input type="submit" value="Actualizar" class="boton">
                 </div>
             </form>
         </div>
-<?php
-    } else {
-        echo "No se encontró el producto con el ID especificado.";
-    }
-}
+        <?php
+            } else {
+                echo "<p class='mensaje'>No se encontró la tarea con el nombre especificado.</p>";
+            }
+        }
 
-// Verificar si se envió el formulario de actualización
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
-    $id = $_POST["id"];
-    $nombre = $_POST["nombre"];
-    $descripcion = $_POST["descripcion"];
-    $precio = $_POST["precio"];
-    $stock = $_POST["stock"];
+        // Verificar si se envió el formulario de actualización
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Obtener los datos del formulario
+            $id = $_POST["id"];
+            $nombre = $_POST["nombre"];
+            $fecha = $_POST["fecha"];
+            $descripcion = $_POST["descripcion"];
 
-    // Realizar la lógica de actualización en la base de datos
-    $query = "UPDATE productos SET nombre = '$nombre', descripcion = '$descripcion', precio = '$precio', stock = '$stock' WHERE id_producto = '$id'";
-    $result = mysqli_query($conexion, $query);
+            // Realizar la lógica de actualización en la base de datos
+            $query = "UPDATE tareas SET nombre = '$nombre', fecha = '$fecha', descripcion = '$descripcion' WHERE nombre = '$id'";
+            $result = mysqli_query($conexion, $query);
 
-    // Verificar si la actualización fue exitosa
-    if ($result) {
-        echo "<p>Producto actualizado exitosamente.</p>";
-    } else {
-        echo "<p>Error al actualizar el producto.</p>";
-    }
-}
-?>
+            // Verificar si la actualización fue exitosa
+            if ($result) {
+                echo "<p class='mensaje'>Tarea actualizada exitosamente.</p>";
+            } else {
+                echo "<p class='mensaje'>Error al actualizar la tarea.</p>";
+            }
+        }
+        ?>
 
-<a href="bienvenida.php" class="back-button">Regresar</a>
+        <a href="bienvenida.php" class="back-button">Regresar</a>
 
-</div>
+    </div>
 </body>
 </html>
-        
-        
-        
